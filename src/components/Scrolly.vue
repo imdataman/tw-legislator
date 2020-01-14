@@ -21,7 +21,7 @@ export default {
     
     const CIRCLE_RADIUS = MOBILE? 10 : 30,
         COLLIDE_RADIUS = CIRCLE_RADIUS * 1.2,
-        STRENGTH = 1,
+        STRENGTH = 1.5,
         WIDTH = window.innerWidth,
         HEIGHT = window.innerHeight,
         LEFT_POSITION = 0,
