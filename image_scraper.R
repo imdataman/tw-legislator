@@ -3,7 +3,7 @@ packages_not_installed <- packages_list[!packages_list %in% installed.packages()
 install.packages(packages_not_installed)
 lapply(packages_list, require, character.only = TRUE)
 
-new_dir <- "tw_legislator"
+new_dir <- "tw-legislator"
 new_dir_path <- paste0("./own_project/", new_dir)
 setwd(new_dir_path)
 ifelse(!dir.exists("./src/assets/data"), dir.create("./src/assets/data"), FALSE)
