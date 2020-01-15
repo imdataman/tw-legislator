@@ -1,4 +1,6 @@
-# tw_legislator
+# 互動圖表看第十屆立法委員 Interactive: know your legislators by numbers
+
+從政黨、陣營、年齡、任期、性別分析新一任立委組成 An interactive that lets you find out who are Taiwan's new legislators
 
 ## Project setup
 ```
