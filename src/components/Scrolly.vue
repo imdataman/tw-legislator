@@ -154,6 +154,22 @@ export default {
                 return d3.forceX(() => CENTER[0]).strength(WEAKER_STRENGTH)
             },
             mobile() {
+                if (d3.select('.clicked')) {
+                    d3.select('.clicked').classed('clicked', false);                
+                }
+                if (selectedId) {
+                        d3.selectAll('.node').filter(circle => circle.id == selectedId)
+                            .transition()
+                            .attr("x", d => d.x)
+                            .attr("y", d => d.y)
+                            .attr("height", () => CIRCLE_RADIUS * 2)
+                            .attr("width", () => CIRCLE_RADIUS * 2);
+
+                        d3.select('.tooltip').transition()
+                            .style("opacity", 0);
+                    }
+
+                selectedId = undefined;
                 d3.selectAll('.node').style('pointer-events', 'none')
                     .style('cursor', 'auto');
                 d3.select('#buttonContainer')
