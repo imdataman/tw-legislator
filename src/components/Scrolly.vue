@@ -73,9 +73,9 @@ export default {
             step: 2,
             desktop() {
                 return d3.forceX(d => {
-                    if (['陳椒華', '林昶佐', '陳柏惟', '趙正宇', '王婉諭', '邱顯智'].includes(d.name)) {
+                    if (['林昶佐', '陳柏惟', '趙正宇'].includes(d.name)) {
                         return LEFT_POSITION;
-                    } else if (['邱臣遠', '高虹安', '蔡壁如', '張其祿', '傅崐萁', '高金素梅Ciwas Ali', '賴香伶'].includes(d.name)) {
+                    } else if (['傅崐萁', '高金素梅Ciwas Ali'].includes(d.name)) {
                         return RIGHT_POSITION;
                     } else {
                         return partyScaleDesktop(d.party)
@@ -84,16 +84,16 @@ export default {
             },
             mobile() {
                 return d3.forceY(d => {
-                    if (['陳椒華', '林昶佐', '陳柏惟', '趙正宇', '王婉諭', '邱顯智'].includes(d.name)) {
+                    if (['林昶佐', '陳柏惟', '趙正宇'].includes(d.name)) {
                         return UPPER_POSITION;
-                    } else if (['邱臣遠', '高虹安', '蔡壁如', '張其祿', '傅崐萁', '高金素梅Ciwas Ali', '賴香伶'].includes(d.name)) {
+                    } else if (['傅崐萁', '高金素梅Ciwas Ali'].includes(d.name)) {
                         return LOWER_POSITION;
                     } else {
                         return partyScaleMobile(d.party)
                     }
                 }).strength(STRENGTH)
             },
-            text: '時力、基進及友綠立委算入綠營</br>台民與友藍立委算入藍營</br>綠營共 <span>68</span> 席 藍營共 <span>45</span> 席',
+            text: '友綠立委算入綠營</br>友藍立委算入藍營</br>綠營 <span>65</span> 席 藍營 <span>40</span> 席 中間 <span>8</span> 席',
         },
         {
             step: 3,
