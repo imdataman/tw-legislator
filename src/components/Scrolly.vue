@@ -37,6 +37,9 @@ export default {
     let selectedId = undefined,
       utils = undefined;
 
+    const greenLeaning = ["林昶佐", "陳柏惟", "趙正宇"],
+      blueLeaning = ["傅崐萁", "高金素梅Ciwas Ali"];
+
     const ageScaleDesktop = d3.scaleThreshold(
       [30, 40, 50, 60, 70],
       [
@@ -142,9 +145,9 @@ export default {
         desktop() {
           return d3
             .forceX(d => {
-              if (["林昶佐", "陳柏惟", "趙正宇"].includes(d.name)) {
+              if (greenLeaning.includes(d.name)) {
                 return LEFT_POSITION;
-              } else if (["傅崐萁", "高金素梅Ciwas Ali"].includes(d.name)) {
+              } else if (blueLeaning.includes(d.name)) {
                 return RIGHT_POSITION;
               } else {
                 return partyScaleDesktop(d.party);
@@ -155,9 +158,9 @@ export default {
         mobile() {
           return d3
             .forceY(d => {
-              if (["林昶佐", "陳柏惟", "趙正宇"].includes(d.name)) {
+              if (greenLeaning.includes(d.name)) {
                 return UPPER_POSITION;
-              } else if (["傅崐萁", "高金素梅Ciwas Ali"].includes(d.name)) {
+              } else if (blueLeaning.includes(d.name)) {
                 return LOWER_POSITION;
               } else {
                 return partyScaleMobile(d.party);
@@ -295,6 +298,17 @@ export default {
         text: ""
       }
     ];
+
+    const buttonData = [
+      { name: "打散", response: { index: 0 } },
+      { name: "政黨", response: { index: 1 } },
+      { name: "陣營", response: { index: 2 } },
+      { name: "年齡", response: { index: 3 } },
+      { name: "任期", response: { index: 4 } },
+      { name: "性別", response: { index: 5 } }
+    ];
+
+    const ageIndex = buttonData.filter(d => d.name == "年齡")[0].response.index;
 
     const section = d3
       .select("#main")
@@ -488,14 +502,7 @@ export default {
         .append("div")
         .attr("id", "buttonContainer")
         .selectAll(".button")
-        .data([
-          { name: "打散", response: { index: 0 } },
-          { name: "政黨", response: { index: 1 } },
-          { name: "陣營", response: { index: 2 } },
-          { name: "年齡", response: { index: 3 } },
-          { name: "任期", response: { index: 4 } },
-          { name: "性別", response: { index: 5 } }
-        ])
+        .data(buttonData)
         .enter()
         .append("div")
         .attr("class", "button")
@@ -520,7 +527,7 @@ export default {
 
           d3.select(this).classed("clicked", true);
           handleStepEnter(d.response);
-          if (d.response.index != 3) {
+          if (d.response.index != ageIndex) {
             handleStepExit();
           }
         });
@@ -559,7 +566,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
 #scrolly {
   position: relative;
